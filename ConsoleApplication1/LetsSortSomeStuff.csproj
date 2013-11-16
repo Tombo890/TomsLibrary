@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BFS.cs" />
+    <Compile Include="BTree.cs" />
     <Compile Include="DFS.cs" />
     <Compile Include="HashTable.cs" />
     <Compile Include="Sorting.cs" />
