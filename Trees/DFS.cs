@@ -4,43 +4,151 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsSortSomeStuff
+namespace Trees
 {
     class DFS
     {
-        public void DFS()
-        {
+        // Properties
+        private int[] treeArray{ get; set;}
 
+        public DFS(int[] treeToSearch)
+        {
+            this.treeArray = treeToSearch;
         }
 
-        public void PreOrder()
+        public bool PreOrderSearch(int index, int value)
         {
+            // Safety checks
+            if(treeArray == null || treeArray.Length == 0 || index > treeArray.Length - 1)
+            {
+                return false;
+            }
+
             // Visit the root
+            if(treeArray[index] == value)
+            {
+                return true;
+            }
 
-            // Traverse left subtree
+            // Vars for switch
+            bool left = false;
+            bool right = false;
+            if (index == 0)
+            {
+                // Traverse left subtree
+                left = PreOrderSearch(1 , value);
 
-            //Traverse right subtree
+                // Traverse right subtree
+                right = PreOrderSearch(2, value);
+            }
+            else
+            {
+                // If using Type that is not 0 based
+                // left node is index * 2
+                // right node is index * 2 + 1
 
+                // Traverse left subtree
+                left = PreOrderSearch(index * 2 + 1, value);
+
+                // Traverse right subtree
+                right = PreOrderSearch(index * 2 + 2, value);
+            }
+
+            return left || right;
         }
 
-        public void InOrder()
+        public bool InOrderSearch(int index, int value)
         {
-            // Traverse left subtree
+            // Safety checks
+            if (treeArray == null || treeArray.Length == 0 || index > treeArray.Length - 1)
+            {
+                return false;
+            }
 
-            // Visit the root
+            // Vars for switch
+            bool left = false;
+            bool right = false;
+            if(index == 0)
+            {
+                // Traverse left subtree
+                left = PreOrderSearch(1, value);
 
-            // Traverse the right subtree
+                // Visit the root
+                if (treeArray[index] == value)
+                {
+                    return true;
+                }
 
+                // Traverse right subtree
+                right = PreOrderSearch(2, value);
+            }
+            else
+            {
+                // If using Type that is not 0 based
+                // left node is index * 2
+                // right node is index * 2 + 1
+
+                // Traverse left subtree
+                left = PreOrderSearch(index * 2 + 1, value);
+
+                // Visit the root
+                if (treeArray[index] == value)
+                {
+                    return true;
+                }
+
+                // Traverse right subtree
+                right = PreOrderSearch(index * 2 + 2, value);
+            }
+
+            return left || right;
         }
 
-        public void PostOrder()
+        public bool PostOrderSearch(int index, int value)
         {
-            // Traverse left subtree
+            // Safety checks
+            if (treeArray == null || treeArray.Length == 0 || index > treeArray.Length - 1)
+            {
+                return false;
+            }
 
-            // Traverse right subtree
+            // Vars for switch
+            bool left = false;
+            bool right = false;
+            if (index == 0)
+            {
+                // Traverse left subtree
+                left = PreOrderSearch(1, value);
 
-            // Visit the root
+                // Traverse right subtree
+                right = PreOrderSearch(2, value);
 
+                // Visit the root
+                if (treeArray[index] == value)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                // If using Type that is not 0 based
+                // left node is index * 2
+                // right node is index * 2 + 1
+
+                // Traverse left subtree
+                left = PreOrderSearch(index * 2 + 1, value);
+
+                // Traverse right subtree
+                right = PreOrderSearch(index * 2 + 2, value);
+
+                // Visit the root
+                if (treeArray[index] == value)
+                {
+                    return true;
+                }
+            }
+
+            return left || right;
         }
     }
 }

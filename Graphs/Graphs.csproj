@@ -45,6 +45,7 @@
     <Compile Include="BFS.cs" />
     <Compile Include="DFS.cs" />
     <Compile Include="Dijkstra.cs" />
+    <Compile Include="GraphTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
